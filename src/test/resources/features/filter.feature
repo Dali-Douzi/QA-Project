@@ -24,7 +24,7 @@ Feature: Product Filtering and Sorting
   Scenario: Apply invalid price range filter
     When I apply an invalid price filter
     Then I should see an error about invalid price range
-    Or I should see no results
+    And I should see no results
 
   @Invalid
   Scenario: Filter by category with no products

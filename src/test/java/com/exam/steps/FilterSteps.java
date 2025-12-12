@@ -75,4 +75,13 @@ public class FilterSteps {
         searchPage.selectCategory("NonExistentCategory");
         System.out.println("✓ Filtered by category with no products");
     }
+
+    // NEW STEP DEFINITIONS TO FIX "UNDEFINED" ERRORS
+    
+    @Then("I should see no results")
+    public void i_should_see_no_results() {
+        assertTrue(searchPage.isNoResultsMessageDisplayed() || searchPage.getProductCount() == 0,
+            "Should show no results message or have zero products");
+        System.out.println("✓ No results displayed as expected");
+    }
 }

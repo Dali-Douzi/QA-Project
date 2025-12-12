@@ -95,4 +95,22 @@ public class CartSteps {
         assertFalse(cartPage.isCheckoutButtonEnabled(), "Checkout button should be disabled");
         System.out.println("✓ Checkout button is disabled");
     }
+
+    // NEW STEP DEFINITIONS TO FIX "UNDEFINED" ERRORS
+    
+    @Then("the total price should be displayed")
+    public void the_total_price_should_be_displayed() {
+        String totalPrice = cartPage.getTotalPrice();
+        assertFalse(totalPrice.isEmpty(), "Total price should be displayed");
+        assertTrue(totalPrice.contains("$") || totalPrice.contains("Total"), 
+            "Total price should contain currency or 'Total' text");
+        System.out.println("✓ Total price displayed: " + totalPrice);
+    }
+
+    @Then("the total price should be updated")
+    public void the_total_price_should_be_updated() {
+        String totalPrice = cartPage.getTotalPrice();
+        assertFalse(totalPrice.isEmpty(), "Total price should be displayed after update");
+        System.out.println("✓ Total price updated: " + totalPrice);
+    }
 }

@@ -23,7 +23,7 @@ Feature: Product Search Functionality
   Scenario: Search with special characters only
     When I search for "@#$%^&*"
     Then I should see a no results message
-    Or I should see an error message about invalid search
+    And I should see an error message about invalid search
 
   @Valid
   Scenario: Search for a specific product category

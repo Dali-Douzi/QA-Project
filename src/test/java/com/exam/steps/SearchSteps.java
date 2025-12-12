@@ -66,4 +66,21 @@ public class SearchSteps {
         assertEquals(0, searchPage.getProductCount(), "Should have zero products");
         System.out.println("✓ No products found as expected");
     }
+
+    // NEW STEP DEFINITIONS TO FIX "UNDEFINED" ERRORS
+    
+    @Then("I should see products in the results")
+    public void i_should_see_products_in_the_results() {
+        assertTrue(searchPage.areResultsDisplayed(), "Search results should be displayed");
+        assertTrue(searchPage.getProductCount() > 0, "Should have at least one product");
+        System.out.println("✓ Products displayed in results: " + searchPage.getProductCount());
+    }
+
+    @Then("I should see at least {int} product in the results")
+    public void i_should_see_at_least_product_in_the_results(Integer minCount) {
+        int actualCount = searchPage.getProductCount();
+        assertTrue(actualCount >= minCount, 
+            "Expected at least " + minCount + " products but found " + actualCount);
+        System.out.println("✓ Found " + actualCount + " product(s) - meets minimum of " + minCount);
+    }
 }
